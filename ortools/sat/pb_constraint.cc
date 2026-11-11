@@ -685,7 +685,7 @@ void UpperBoundedLinearConstraint::FillReason(
 
   // Optimization for an "at most one" constraint. Note that the
   // source_trail_index set by InitializeRhs() is ok in this case.
-  if (rhs_ == 1 && !add_extra_literal_reason) {
+  if (rhs_ == 1 && !add_extra_literal_reason && enforcement_literals.empty()) {
     reason->push_back(trail[source_trail_index].Negated());
     return;
   }
